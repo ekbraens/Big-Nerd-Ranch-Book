@@ -26,18 +26,18 @@
 //    bigRect.size.height *= 2.0;
     bigRect.size.width *= 2.0;
     
-    UIScrollView * scroller = [[UIScrollView alloc] initWithFrame:scrollFrame];
-    scroller.pagingEnabled = YES;
-    [self.window addSubview:scroller];
+//    UIScrollView * scroller = [[UIScrollView alloc] initWithFrame:scrollFrame];
+//    scroller.pagingEnabled = YES;
+//    [self.window addSubview:scroller];
     
     HypnosisView * hypnoView = [[HypnosisView alloc] initWithFrame:scrollFrame];
-    [scroller addSubview:hypnoView];
+    [self.window addSubview:hypnoView];
     
-    scrollFrame.origin.x += scrollFrame.size.width;
-    HypnosisView * hypnoViewR = [[HypnosisView alloc] initWithFrame:scrollFrame];
-    [scroller addSubview:hypnoViewR];
-    
-    scroller.contentSize = bigRect.size;
+//    scrollFrame.origin.x += scrollFrame.size.width;
+//    HypnosisView * hypnoViewR = [[HypnosisView alloc] initWithFrame:scrollFrame];
+//    [scroller addSubview:hypnoViewR];
+//    
+//    scroller.contentSize = bigRect.size;
     
     [self.window makeKeyAndVisible];
     return YES;
