@@ -24,7 +24,7 @@
     UILocalNotification * note = [[UILocalNotification alloc] init];
     note.alertBody = @"HYPNOTIZE ME!";
     note.fireDate = date;
-    
+
     [[UIApplication sharedApplication] scheduleLocalNotification:note];
 }
 
