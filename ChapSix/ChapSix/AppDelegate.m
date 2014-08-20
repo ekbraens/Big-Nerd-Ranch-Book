@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "HypnoViewController.h"
 #import "TimerViewController.h"
+#import "QuizViewController.h"
 
 @implementation AppDelegate
 
@@ -27,8 +28,10 @@
     TimerViewController * tvc = [[TimerViewController alloc] init];
 //    self.window.rootViewController = tvc;
     
+    QuizViewController * qvc = [[QuizViewController alloc] init];
+    
     UITabBarController * tabBarController = [[UITabBarController alloc] init];
-    tabBarController.viewControllers = @[hvc, tvc];
+    tabBarController.viewControllers = @[hvc, tvc, qvc];
     
     self.window.rootViewController = tabBarController;
     

@@ -8,6 +8,12 @@
 
 #import "QuizViewController.h"
 
+@interface QuizViewController ()
+
+@property (nonatomic, weak) IBOutlet UILabel * awnser;
+
+@end
+
 @implementation QuizViewController
 
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -29,5 +35,16 @@
     return self;
 }
 
+-(IBAction)touchThatButton:(id)sender
+{
+    _awnser.text = @"Sure!";
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:YES];
+    
+    _awnser.text = @"???";
+}
 
 @end
