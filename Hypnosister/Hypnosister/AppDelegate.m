@@ -9,6 +9,12 @@
 #import "AppDelegate.h"
 #import "HypnosisView.h"
 
+@interface AppDelegate () <UIScrollViewDelegate>
+
+@property (nonatomic, strong) HypnosisView * hypnoView;
+
+@end
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -23,24 +29,35 @@
 
     CGRect scrollFrame = self.window.bounds;
     CGRect bigRect = scrollFrame;
-//    bigRect.size.height *= 2.0;
+    bigRect.size.height *= 2.0;
     bigRect.size.width *= 2.0;
     
     UIScrollView * scroller = [[UIScrollView alloc] initWithFrame:scrollFrame];
-    scroller.pagingEnabled = YES;
+    //scroller.pagingEnabled = YES;
     [self.window addSubview:scroller];
     
-    HypnosisView * hypnoView = [[HypnosisView alloc] initWithFrame:scrollFrame];
-    [scroller addSubview:hypnoView];
+    _hypnoView = [[HypnosisView alloc] initWithFrame:bigRect];
+    [scroller addSubview:_hypnoView];
     
-    scrollFrame.origin.x += scrollFrame.size.width;
-    HypnosisView * hypnoViewR = [[HypnosisView alloc] initWithFrame:scrollFrame];
-    [scroller addSubview:hypnoViewR];
+    // maximum zoom must be greater than 1.0 to activate
+    scroller.maximumZoomScale = 5.0;
+    scroller.minimumZoomScale = 1.0;
+    // set the delgate!
+    scroller.delegate = self;
+    
+    //scrollFrame.origin.x += scrollFrame.size.width;
+    //HypnosisView * hypnoViewR = [[HypnosisView alloc] initWithFrame:scrollFrame];
+    //[scroller addSubview:hypnoViewR];
     
     scroller.contentSize = bigRect.size;
     
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return _hypnoView;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
