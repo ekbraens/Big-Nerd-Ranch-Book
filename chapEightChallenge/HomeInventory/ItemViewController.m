@@ -27,20 +27,59 @@
     return [self init];
 }
 
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 3;
+}
+
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[[ItemStore sharedStore] allItems] count];
+    if (section == 0)
+    {
+        return [[[ItemStore sharedStore] underFifty] count];
+    }
+    if (section == 1)
+    {
+        return [[[ItemStore sharedStore] overFifty] count];
+    }
+    if (section == 2)
+    {
+        return 1;
+    }
+    return 0;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
-    NSArray * items = [[ItemStore sharedStore] allItems];
-    BNRItem * item = items[indexPath.row];
     
-    cell.textLabel.text = item.description;
+    if (indexPath.section == 0)
+    {
+        NSArray * cheapItems = [[ItemStore sharedStore] underFifty];
+        BNRItem * item = cheapItems[indexPath.row];
     
-    return cell;
+        cell.textLabel.text = item.description;
+    
+        return cell;
+    }
+    
+    if (indexPath.section == 1)
+    {
+        NSArray * expensiveItems = [[ItemStore sharedStore] overFifty];
+        BNRItem * item = expensiveItems[indexPath.row];
+        
+        cell.textLabel.text = item.description;
+        
+        return cell;
+    }
+    
+    if (indexPath.section == 2)
+    {
+        cell.textLabel.text = @"No More Items!";
+        return cell;
+    }
+    
+    return 0;
 }
 
 -(void)viewDidLoad
