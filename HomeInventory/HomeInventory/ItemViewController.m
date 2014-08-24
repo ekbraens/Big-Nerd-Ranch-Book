@@ -10,6 +10,12 @@
 #import "ItemStore.h"
 #import "BNRItem.h"
 
+@interface ItemViewController ()
+
+@property (nonatomic, strong) IBOutlet UIView * headerView;
+
+@end
+
 @implementation ItemViewController
 
 - (instancetype)init
@@ -48,6 +54,38 @@
     [super viewDidLoad];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+    
+    [self.tableView setTableHeaderView:self.headerView];
 }
 
+- (UIView *)headerView
+{
+    if (!_headerView)
+    {
+        [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
+    }
+    
+    return _headerView;
+}
+
+-(IBAction)addNewItem:(id)sender
+{
+    
+}
+
+-(IBAction)toggleEditingMode:(id)sender
+{
+    if (self.isEditing)
+    {
+        [sender setTitle:@"Edit" forState:UIControlStateNormal];
+        
+        [self setEditing:NO animated:YES];
+    }
+    else
+    {
+        [sender setTitle:@"Done?" forState:UIControlStateNormal];
+        
+        [self setEditing:YES animated:YES];
+    }
+}
 @end
