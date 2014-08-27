@@ -56,6 +56,27 @@
     return item;
 }
 
+-(void)removeItem:(BNRItem *)item
+{
+    [self.privateItems removeObjectIdenticalTo:item];
+}
+
+-(void)moveItem:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex
+{
+    if (fromIndex == toIndex)
+    {
+        return;
+    }
+    else
+    {
+        BNRItem * item = [self.privateItems objectAtIndex:fromIndex];
+    
+        [self.privateItems removeObjectAtIndex:fromIndex];
+    
+        [self.privateItems insertObject:item atIndex:toIndex];
+    }
+}
+
 -(NSArray *)allItems
 {
     return self.privateItems;

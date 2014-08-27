@@ -70,7 +70,37 @@
 
 -(IBAction)addNewItem:(id)sender
 {
+    BNRItem * newItem = [[ItemStore sharedStore] createItem];
     
+    NSInteger lastRow = [[[ItemStore sharedStore] allItems] indexOfObject:newItem];
+    
+    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
+    
+    // insert this new row into the table view
+    [self.tableView insertRowsAtIndexPaths:@[indexPath]
+                          withRowAnimation:UITableViewRowAnimationTop];
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        NSArray * items = [[ItemStore sharedStore] allItems];
+        BNRItem * item = items[indexPath.row];
+        [[ItemStore sharedStore] removeItem:item];
+        
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"Remove";
+}
+
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    [[ItemStore sharedStore] moveItem:sourceIndexPath.row toIndex:destinationIndexPath.row];
 }
 
 -(IBAction)toggleEditingMode:(id)sender
