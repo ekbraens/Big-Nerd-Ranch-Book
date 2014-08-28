@@ -18,8 +18,9 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     ItemViewController * ivc = [[ItemViewController alloc] init];
-    
-    self.window.rootViewController = ivc;
+    UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:ivc];
+
+    self.window.rootViewController = navigationController;
     
     [self.window makeKeyAndVisible];
     return YES;

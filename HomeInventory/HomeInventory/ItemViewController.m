@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 New. All rights reserved.
 //
 
+#import "DetailViewController.h"
 #import "ItemViewController.h"
 #import "ItemStore.h"
 #import "BNRItem.h"
@@ -21,6 +22,17 @@
 - (instancetype)init
 {
     self = [super initWithStyle:UITableViewStylePlain];
+    if (self)
+    {
+        self.navigationItem.title = @"Home Organizer";
+        
+        UIBarButtonItem * bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewItem:)];
+        
+        // set this new bar button to the right
+        self.navigationItem.rightBarButtonItem = bbi;
+        
+        self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    }
     for (int i = 0; i < 5; ++i)
     {
         [[ItemStore sharedStore] createItem];
@@ -31,6 +43,25 @@
 - (instancetype)initWithStyle:(UITableViewStyle)style
 {
     return [self init];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    
+    [self.tableView reloadData];
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DetailViewController * dvc = [[DetailViewController alloc] init];
+    
+    [self.navigationController pushViewController:dvc animated:YES];
+    
+    NSArray * items = [[ItemStore sharedStore] allItems];
+    BNRItem * selectedItem = items[indexPath.row];
+    
+    dvc.item = selectedItem;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -58,15 +89,15 @@
     [self.tableView setTableHeaderView:self.headerView];
 }
 
-- (UIView *)headerView
-{
-    if (!_headerView)
-    {
-        [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
-    }
-    
-    return _headerView;
-}
+//- (UIView *)headerView
+//{
+//    if (!_headerView)
+//    {
+//        [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
+//    }
+//    
+//    return _headerView;
+//}
 
 -(IBAction)addNewItem:(id)sender
 {
@@ -103,19 +134,19 @@
     [[ItemStore sharedStore] moveItem:sourceIndexPath.row toIndex:destinationIndexPath.row];
 }
 
--(IBAction)toggleEditingMode:(id)sender
-{
-    if (self.isEditing)
-    {
-        [sender setTitle:@"Edit" forState:UIControlStateNormal];
-        
-        [self setEditing:NO animated:YES];
-    }
-    else
-    {
-        [sender setTitle:@"Done?" forState:UIControlStateNormal];
-        
-        [self setEditing:YES animated:YES];
-    }
-}
+//-(IBAction)toggleEditingMode:(id)sender
+//{
+//    if (self.isEditing)
+//    {
+//        [sender setTitle:@"Edit" forState:UIControlStateNormal];
+//        
+//        [self setEditing:NO animated:YES];
+//    }
+//    else
+//    {
+//        [sender setTitle:@"Done?" forState:UIControlStateNormal];
+//        
+//        [self setEditing:YES animated:YES];
+//    }
+//}
 @end
