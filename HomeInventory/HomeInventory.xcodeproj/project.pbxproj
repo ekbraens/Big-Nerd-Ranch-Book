@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D52A9E0319AE9DA4005226BD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D52A9E0119AE9DA4005226BD /* DetailViewController.m */; };
 		D52A9E0419AE9DA4005226BD /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D52A9E0219AE9DA4005226BD /* DetailViewController.xib */; };
+		D598CF3719B27DDB007B74EE /* ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D598CF3619B27DDB007B74EE /* ImageStore.m */; };
 		D5A6F56C19A96940003ED05E /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5A6F56B19A96940003ED05E /* HeaderView.xib */; };
 		D5C503D019A6A9E40038F106 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C503CF19A6A9E40038F106 /* Foundation.framework */; };
 		D5C503D219A6A9E40038F106 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C503D119A6A9E40038F106 /* CoreGraphics.framework */; };
@@ -41,6 +42,8 @@
 		D52A9E0019AE9DA4005226BD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		D52A9E0119AE9DA4005226BD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		D52A9E0219AE9DA4005226BD /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		D598CF3519B27DDB007B74EE /* ImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageStore.h; sourceTree = "<group>"; };
+		D598CF3619B27DDB007B74EE /* ImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageStore.m; sourceTree = "<group>"; };
 		D5A6F56B19A96940003ED05E /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		D5C503CC19A6A9E40038F106 /* HomeInventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeInventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C503CF19A6A9E40038F106 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -133,10 +136,12 @@
 				D5C503FF19A6AB560038F106 /* ItemViewController.m */,
 				D52A9E0019AE9DA4005226BD /* DetailViewController.h */,
 				D52A9E0119AE9DA4005226BD /* DetailViewController.m */,
-				D5C5040419A6B6C60038F106 /* ItemStore.h */,
-				D5C5040519A6B6C60038F106 /* ItemStore.m */,
 				D5A6F56B19A96940003ED05E /* HeaderView.xib */,
 				D52A9E0219AE9DA4005226BD /* DetailViewController.xib */,
+				D598CF3519B27DDB007B74EE /* ImageStore.h */,
+				D598CF3619B27DDB007B74EE /* ImageStore.m */,
+				D5C5040419A6B6C60038F106 /* ItemStore.h */,
+				D5C5040519A6B6C60038F106 /* ItemStore.m */,
 			);
 			path = HomeInventory;
 			sourceTree = "<group>";
@@ -269,6 +274,7 @@
 			files = (
 				D5C503E019A6A9E40038F106 /* AppDelegate.m in Sources */,
 				D5C5040319A6B0BB0038F106 /* BNRItem.m in Sources */,
+				D598CF3719B27DDB007B74EE /* ImageStore.m in Sources */,
 				D5C5040019A6AB560038F106 /* ItemViewController.m in Sources */,
 				D5C503DC19A6A9E40038F106 /* main.m in Sources */,
 				D5C5040619A6B6C60038F106 /* ItemStore.m in Sources */,

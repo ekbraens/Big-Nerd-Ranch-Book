@@ -33,10 +33,10 @@
         
         self.navigationItem.leftBarButtonItem = self.editButtonItem;
     }
-    for (int i = 0; i < 5; ++i)
-    {
-        [[ItemStore sharedStore] createItem];
-    }
+//    for (int i = 0; i < 5; ++i)
+//    {
+//        [[ItemStore sharedStore] createItem];
+//    }
     return self;
 }
 
