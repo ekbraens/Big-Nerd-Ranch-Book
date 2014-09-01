@@ -9,10 +9,13 @@
 #import "DrawView.h"
 #import "Line.h"
 
-@interface DrawView ()
+@interface DrawView () <UIGestureRecognizerDelegate>
 
+@property (nonatomic, strong) UIPanGestureRecognizer * moveRecog;
 @property (nonatomic, strong) NSMutableDictionary * linesInProgress;
 @property (nonatomic, strong) NSMutableArray * finishedLines;
+
+@property (nonatomic, weak) Line * selectedLine;
 
 @end
 
@@ -75,6 +78,11 @@
     {
         [self strokeLine:self.linesInProgress[key]];
     }
+    if (self.selectedLine)
+    {
+        [[UIColor greenColor] set];
+        [self strokeLine:self.selectedLine];
+    }
 }
 
 -(void)strokeLine:(Line *)line
@@ -95,11 +103,155 @@
     if (self)
     {
         self.linesInProgress = [[NSMutableDictionary alloc] init];
+        self.finishedLines = [[NSMutableArray alloc] init];
         self.backgroundColor = [UIColor grayColor];
         self.multipleTouchEnabled = YES;
+        
+        UITapGestureRecognizer * doubleTapRecog = [[UITapGestureRecognizer alloc]
+                                                initWithTarget:self action:@selector(doubleTap:)];
+        doubleTapRecog.numberOfTapsRequired = 2;
+        doubleTapRecog.delaysTouchesBegan = YES;
+        [self addGestureRecognizer:doubleTapRecog];
+        
+        UITapGestureRecognizer * tapRecog = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
+        tapRecog.delaysTouchesBegan = YES;
+        [tapRecog requireGestureRecognizerToFail:doubleTapRecog];
+        [self addGestureRecognizer:tapRecog];
+        
+        UILongPressGestureRecognizer * longPressRecog = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+        [self addGestureRecognizer:longPressRecog];
+        
+        self.moveRecog = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveLine:)];
+        
+        self.moveRecog.delegate = self;
+        self.moveRecog.cancelsTouchesInView = NO;
+        [self addGestureRecognizer:self.moveRecog];
     }
     
     return self;
+}
+
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    if (gestureRecognizer == self.moveRecog)
+    {
+        return YES;
+    }
+    return NO;
+}
+
+-(Line *)lineAtPoint:(CGPoint)p
+{
+    // Find a line close to p
+    for (Line * line in self.finishedLines)
+    {
+        CGPoint start = line.startPoint;
+        CGPoint end = line.endPoint;
+        
+        // check a few points on the line
+        for (float t = 0.0; t <= 1.0; t+=.05)
+        {
+            float x = start.x + t * (end.x - start.x);
+            float y = start.y + t * (end.y - start.y);
+            
+            if (hypot(x - p.x, y - p.y) < 20.0)
+            {
+                return line;
+            }
+        }
+    }
+    return nil;
+}
+
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
+}
+
+-(void)deleteLine:(id)sender
+{
+    [self.finishedLines removeObject:self.selectedLine];
+    
+    [self setNeedsDisplay];
+}
+
+-(void)moveLine:(UIPanGestureRecognizer *)gr
+{
+    if (!self.selectedLine)
+    {
+        return;
+    }
+    
+    if (gr.state == UIGestureRecognizerStateChanged)
+    {
+        CGPoint translation = [gr translationInView:self];
+        
+        CGPoint begin = self.selectedLine.startPoint;
+        CGPoint end = self.selectedLine.endPoint;
+        begin.x += translation.x;
+        begin.y += translation.y;
+        end.x += translation.x;
+        end.y += translation.y;
+        
+        self.selectedLine.startPoint = begin;
+        self.selectedLine.endPoint = end;
+        
+        [self setNeedsDisplay];
+        
+        [gr setTranslation:CGPointZero inView:self];
+    }
+}
+
+-(void)longPress:(UIGestureRecognizer *)gr
+{
+    if (gr.state == UIGestureRecognizerStateBegan)
+    {
+        CGPoint point = [gr locationInView:self];
+        self.selectedLine = [self lineAtPoint:point];
+        
+        if (self.selectedLine)
+        {
+            [self.linesInProgress removeAllObjects];
+        }
+    }
+    else if(gr.state == UIGestureRecognizerStateEnded)
+    {
+        self.selectedLine = nil;
+    }
+    [self setNeedsDisplay];
+}
+
+-(void)singleTap:(UIGestureRecognizer *)gr
+{
+    CGPoint point = [gr locationInView:self];
+    self.selectedLine = [self lineAtPoint:point];
+    
+    if (self.selectedLine)
+    {
+        [self becomeFirstResponder];
+        
+        UIMenuController * menu = [UIMenuController sharedMenuController];
+        
+        UIMenuItem * deleteItem = [[UIMenuItem alloc] initWithTitle:@"Delete" action:@selector(deleteLine:)];
+        
+        menu.menuItems = @[deleteItem];
+        
+        [menu setTargetRect:CGRectMake(point.x, point.y, 2, 2) inView:self];
+        [menu setMenuVisible:YES animated:YES];
+    }
+    else
+    {
+        [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
+    }
+    
+    [self setNeedsDisplay];
+}
+
+-(void)doubleTap:(UIGestureRecognizer *)gr
+{
+    [self.linesInProgress removeAllObjects];
+    [self.finishedLines removeAllObjects];
+    [self setNeedsDisplay];
 }
 
 @end
