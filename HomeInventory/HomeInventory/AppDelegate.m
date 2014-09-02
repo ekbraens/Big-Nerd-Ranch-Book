@@ -19,7 +19,6 @@
     
     ItemViewController * ivc = [[ItemViewController alloc] init];
     UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:ivc];
-
     self.window.rootViewController = navigationController;
     
     [self.window makeKeyAndVisible];

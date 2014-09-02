@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UIPanGestureRecognizer * moveRecog;
 @property (nonatomic, strong) NSMutableDictionary * linesInProgress;
 @property (nonatomic, strong) NSMutableArray * finishedLines;
+@property (nonatomic) BOOL isSelected;
 
 @property (nonatomic, weak) Line * selectedLine;
 
@@ -27,12 +28,15 @@
     {
         CGPoint location = [t locationInView:self];
         
+        if (!_isSelected)
+        {
         Line * line = [[Line alloc] init];
         line.startPoint = location;
         line.endPoint = location;
         
         NSValue * key = [NSValue valueWithNonretainedObject:t];
         self.linesInProgress[key] = line;
+        }
     }
     
     [self setNeedsDisplay];
@@ -40,6 +44,11 @@
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if (_isSelected)
+    {
+        return;
+    }
+    
     for (UITouch * t in touches)
     {
         NSValue * key = [NSValue valueWithNonretainedObject:t];
@@ -55,11 +64,14 @@
 {
     for (UITouch * t in touches)
     {
+        if (!_isSelected)
+        {
         NSValue * key = [NSValue valueWithNonretainedObject:t];
         Line * line = self.linesInProgress[key];
         
         [self.finishedLines addObject:line];
         [self.linesInProgress removeObjectForKey:key];
+        }
     }
     
     [self setNeedsDisplay];
@@ -177,10 +189,16 @@
 
 -(void)moveLine:(UIPanGestureRecognizer *)gr
 {
+    
     if (!self.selectedLine)
     {
         return;
     }
+//
+//    if (_isSelected && self.selectedLine != [self lineAtPoint:[gr locationInView:self]])
+//    {
+//        return;
+//    }
     
     if (gr.state == UIGestureRecognizerStateChanged)
     {
@@ -228,6 +246,8 @@
     
     if (self.selectedLine)
     {
+        _isSelected = YES;
+        
         [self becomeFirstResponder];
         
         UIMenuController * menu = [UIMenuController sharedMenuController];
@@ -241,6 +261,7 @@
     }
     else
     {
+        _isSelected = NO;
         [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
     }
     
