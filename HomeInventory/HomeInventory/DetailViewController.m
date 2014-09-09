@@ -47,6 +47,8 @@
     // get picked image from info dictionary
     UIImage * image = info[UIImagePickerControllerOriginalImage];
     
+    [self.item setThumbnailFromImage:image];
+    
     [[ImageStore sharedStore] setImage:image forKey:self.item.itemKey];
     
     self.imageView.image = image;
