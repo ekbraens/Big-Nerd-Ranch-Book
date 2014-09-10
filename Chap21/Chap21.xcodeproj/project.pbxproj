@@ -20,6 +20,7 @@
 		D59DBDFD19BFE1C400BA1DA7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D59DBDFB19BFE1C400BA1DA7 /* InfoPlist.strings */; };
 		D59DBDFF19BFE1C400BA1DA7 /* Chap21Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D59DBDFE19BFE1C400BA1DA7 /* Chap21Tests.m */; };
 		D59DBE0A19BFE20300BA1DA7 /* CoursesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D59DBE0919BFE20300BA1DA7 /* CoursesViewController.m */; };
+		D59DBE0D19C001EE00BA1DA7 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D59DBE0C19C001EE00BA1DA7 /* WebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		D59DBDFE19BFE1C400BA1DA7 /* Chap21Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Chap21Tests.m; sourceTree = "<group>"; };
 		D59DBE0819BFE20300BA1DA7 /* CoursesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoursesViewController.h; sourceTree = "<group>"; };
 		D59DBE0919BFE20300BA1DA7 /* CoursesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoursesViewController.m; sourceTree = "<group>"; };
+		D59DBE0B19C001EE00BA1DA7 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		D59DBE0C19C001EE00BA1DA7 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,8 @@
 				D59DBDE019BFE1C400BA1DA7 /* Supporting Files */,
 				D59DBE0819BFE20300BA1DA7 /* CoursesViewController.h */,
 				D59DBE0919BFE20300BA1DA7 /* CoursesViewController.m */,
+				D59DBE0B19C001EE00BA1DA7 /* WebViewController.h */,
+				D59DBE0C19C001EE00BA1DA7 /* WebViewController.m */,
 			);
 			path = Chap21;
 			sourceTree = "<group>";
@@ -247,6 +252,7 @@
 				D59DBDEA19BFE1C400BA1DA7 /* AppDelegate.m in Sources */,
 				D59DBE0A19BFE20300BA1DA7 /* CoursesViewController.m in Sources */,
 				D59DBDE619BFE1C400BA1DA7 /* main.m in Sources */,
+				D59DBE0D19C001EE00BA1DA7 /* WebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,7 +372,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chap21/Chap21-Prefix.pch";
 				INFOPLIST_FILE = "Chap21/Chap21-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -379,7 +387,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chap21/Chap21-Prefix.pch";
 				INFOPLIST_FILE = "Chap21/Chap21-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
