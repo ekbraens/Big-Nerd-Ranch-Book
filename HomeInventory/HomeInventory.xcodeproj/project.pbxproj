@@ -10,6 +10,9 @@
 		D52A9E0319AE9DA4005226BD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D52A9E0119AE9DA4005226BD /* DetailViewController.m */; };
 		D52A9E0419AE9DA4005226BD /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D52A9E0219AE9DA4005226BD /* DetailViewController.xib */; };
 		D598CF3719B27DDB007B74EE /* ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D598CF3619B27DDB007B74EE /* ImageStore.m */; };
+		D5A50BBD19C150250049B47F /* HomeInventory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D5A50BBB19C150250049B47F /* HomeInventory.xcdatamodeld */; };
+		D5A50BC019C151C50049B47F /* ImageTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = D5A50BBF19C151C50049B47F /* ImageTransformer.m */; };
+		D5A50BC319C1593E0049B47F /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D5A50BC219C1593E0049B47F /* BNRItem.m */; };
 		D5A6F56C19A96940003ED05E /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5A6F56B19A96940003ED05E /* HeaderView.xib */; };
 		D5A9ABC619BEAA59008CF145 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5A9ABC519BEAA59008CF145 /* ItemCell.m */; };
 		D5A9ABC819BEAA8D008CF145 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5A9ABC719BEAA8D008CF145 /* ItemCell.xib */; };
@@ -26,7 +29,6 @@
 		D5C503F319A6A9E40038F106 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D5C503F119A6A9E40038F106 /* InfoPlist.strings */; };
 		D5C503F519A6A9E40038F106 /* HomeInventoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D5C503F419A6A9E40038F106 /* HomeInventoryTests.m */; };
 		D5C5040019A6AB560038F106 /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5C503FF19A6AB560038F106 /* ItemViewController.m */; };
-		D5C5040319A6B0BB0038F106 /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D5C5040219A6B0BB0038F106 /* BNRItem.m */; };
 		D5C5040619A6B6C60038F106 /* ItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D5C5040519A6B6C60038F106 /* ItemStore.m */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +48,11 @@
 		D52A9E0219AE9DA4005226BD /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		D598CF3519B27DDB007B74EE /* ImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageStore.h; sourceTree = "<group>"; };
 		D598CF3619B27DDB007B74EE /* ImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageStore.m; sourceTree = "<group>"; };
+		D5A50BBC19C150250049B47F /* HomeInventory.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeInventory.xcdatamodel; sourceTree = "<group>"; };
+		D5A50BBE19C151C50049B47F /* ImageTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTransformer.h; sourceTree = "<group>"; };
+		D5A50BBF19C151C50049B47F /* ImageTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTransformer.m; sourceTree = "<group>"; };
+		D5A50BC119C1593E0049B47F /* BNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItem.h; sourceTree = "<group>"; };
+		D5A50BC219C1593E0049B47F /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
 		D5A6F56B19A96940003ED05E /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		D5A9ABC419BEAA59008CF145 /* ItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCell.h; sourceTree = "<group>"; };
 		D5A9ABC519BEAA59008CF145 /* ItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCell.m; sourceTree = "<group>"; };
@@ -68,8 +75,6 @@
 		D5C503F419A6A9E40038F106 /* HomeInventoryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeInventoryTests.m; sourceTree = "<group>"; };
 		D5C503FE19A6AB560038F106 /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
 		D5C503FF19A6AB560038F106 /* ItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
-		D5C5040119A6B0BB0038F106 /* BNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItem.h; sourceTree = "<group>"; };
-		D5C5040219A6B0BB0038F106 /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
 		D5C5040419A6B6C60038F106 /* ItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemStore.h; sourceTree = "<group>"; };
 		D5C5040519A6B6C60038F106 /* ItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,6 +106,8 @@
 		D5C503C319A6A9E40038F106 = {
 			isa = PBXGroup;
 			children = (
+				D5A50BC119C1593E0049B47F /* BNRItem.h */,
+				D5A50BC219C1593E0049B47F /* BNRItem.m */,
 				D5C503D519A6A9E40038F106 /* HomeInventory */,
 				D5C503EE19A6A9E40038F106 /* HomeInventoryTests */,
 				D5C503CE19A6A9E40038F106 /* Frameworks */,
@@ -131,8 +138,6 @@
 		D5C503D519A6A9E40038F106 /* HomeInventory */ = {
 			isa = PBXGroup;
 			children = (
-				D5C5040119A6B0BB0038F106 /* BNRItem.h */,
-				D5C5040219A6B0BB0038F106 /* BNRItem.m */,
 				D5C503DE19A6A9E40038F106 /* AppDelegate.h */,
 				D5C503DF19A6A9E40038F106 /* AppDelegate.m */,
 				D5C503E119A6A9E40038F106 /* Images.xcassets */,
@@ -150,6 +155,9 @@
 				D5A9ABC419BEAA59008CF145 /* ItemCell.h */,
 				D5A9ABC519BEAA59008CF145 /* ItemCell.m */,
 				D5A9ABC719BEAA8D008CF145 /* ItemCell.xib */,
+				D5A50BBB19C150250049B47F /* HomeInventory.xcdatamodeld */,
+				D5A50BBE19C151C50049B47F /* ImageTransformer.h */,
+				D5A50BBF19C151C50049B47F /* ImageTransformer.m */,
 			);
 			path = HomeInventory;
 			sourceTree = "<group>";
@@ -282,13 +290,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5C503E019A6A9E40038F106 /* AppDelegate.m in Sources */,
-				D5C5040319A6B0BB0038F106 /* BNRItem.m in Sources */,
 				D598CF3719B27DDB007B74EE /* ImageStore.m in Sources */,
 				D5C5040019A6AB560038F106 /* ItemViewController.m in Sources */,
 				D5A9ABC619BEAA59008CF145 /* ItemCell.m in Sources */,
 				D5C503DC19A6A9E40038F106 /* main.m in Sources */,
+				D5A50BBD19C150250049B47F /* HomeInventory.xcdatamodeld in Sources */,
 				D5C5040619A6B6C60038F106 /* ItemStore.m in Sources */,
+				D5A50BC319C1593E0049B47F /* BNRItem.m in Sources */,
 				D52A9E0319AE9DA4005226BD /* DetailViewController.m in Sources */,
+				D5A50BC019C151C50049B47F /* ImageTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +511,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D5A50BBB19C150250049B47F /* HomeInventory.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D5A50BBC19C150250049B47F /* HomeInventory.xcdatamodel */,
+			);
+			currentVersion = D5A50BBC19C150250049B47F /* HomeInventory.xcdatamodel */;
+			path = HomeInventory.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D5C503C419A6A9E40038F106 /* Project object */;
 }
