@@ -20,6 +20,8 @@
 @dynamic orderingValue;
 @dynamic assetType;
 
+// sorry github for tricking you like this, must keep up appearances
+
 -(void)awakeFromInsert
 {
     [super awakeFromInsert];
